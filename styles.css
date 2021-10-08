@@ -1,3 +1,11 @@
-/* styles.css */
-
-/* Add styles here to customize the appearance of your app */
+html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  body, input {
+    font: menu;
+  }
