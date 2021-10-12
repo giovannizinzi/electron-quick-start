@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-  <script src="./renderer.js"></script>
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
@@ -9,6 +8,7 @@
     <title>voice-double</title>
   </head>
   <body>
+    <section class="container">
 
     <div class="wrapper">
       <header class="nav-header">
@@ -51,12 +51,19 @@
     </div>
   
     <div id="CustomSection">
+      <button>Create Custom Voice</button>
         <ul id="CustomSpeakers">
         </ul> 
     </div>
   </div>
 
-  <main class="content js-content"></main>
-  
+  <div class="right">
+      <textarea placeholder="Enter or upload text to transcribe..." id="textInput" name="textInput" rows="16" style="overflow: hidden; word-wrap: break-word; resize: none; "></textarea>  
+      <div class="inner"><input type="image" id="audioDownload" class="audioDownload" src="./images/uploadAudio.png" /></div>
+    </div>
+
+  </section>
+
   </body>
+  <script src="./renderer.js"></script>
 </html>

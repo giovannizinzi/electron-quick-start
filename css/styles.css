@@ -2,14 +2,73 @@ body {
   font-family: "arial", sans-serif;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.container {
+  display: grid;
+  grid-template-columns: 480px 500px auto;
+}
+
 .wrapper {
+  grid-column: 1;
   width: 450px;
-  height: 1000px;
+  height: 99%;
   max-width: 80%;
   position: absolute;
   overflow-x: hidden;  
+  overflow-y: hidden;  
   border-right: 1px solid hsl(0,0%,88%);
   background-color: hsl(0,0%,96%);
+}
+
+.right {
+  grid-column: 2;
+}
+
+.options {
+  grid-column: 2;
+  height: 10%;
+  width:100%;
+}
+
+.audioDownload {
+  height: 40px;  
+  width: 40px;
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+  font-size: 18px;
+}
+
+#paper {
+	color:#FFF;
+	font-size:16px;
+}
+
+#textInput {
+	width:98%;
+  height:100%;
+	overflow:hidden;
+	background-color:#FFF;
+	color:#222;
+	font-weight:normal;
+	font-size:16px;
+	resize:none;
+	line-height:40px;
+	padding: 18px;
+	background-repeat:repeat-y, repeat;
+	border-radius:8px;
+  -moz-box-shadow: 0 0 1.5px 1.5px #3489BA;
+  -webkit-box-shadow: 0 0 1.5px 1.5px #3489BA;
+  box-shadow: 0 0 1.5px 1.5px #3489BA;
+}
+
+.textInput:focus {
+  outline: none !important;
+}
+
+textarea:focus {
+  outline: none !important;
 }
 
 .nav-header {
@@ -33,13 +92,6 @@ display: table;
 
 .clearfix:after {
 clear: both;
-}
-
-#CustomSpeakers, #timelineSampleSpeakers {
-width: 75%;
-position: relative;
-list-style: none;
-padding: 0;
 }
 
 #CustomSpeakers a, #SampleSpeakers a {
@@ -77,10 +129,6 @@ width: 640px;
 padding-left: 25px;
 }
 
-#CustomSpeakers .listing .info .scores span, #SampleSpeakers .listing .info .scores span {
-margin: 0 0.75em;
-}
-
 #CustomSpeakers .listing:hover, #SampleSpeakers .listing:hover {
 cursor: pointer;
 box-shadow: 0px 2px 40px 0 rgba(0, 0, 0, 0.1);
@@ -112,6 +160,11 @@ overflow-y: auto;
 
 .js-is-hidden {
 display: none;
+}
+
+.inner
+{
+    display: inline-block;
 }
 
 .modal-contents h1{
@@ -156,31 +209,6 @@ cursor: pointer;
 color: #666;
 }
 
-.button {
-background-color: #0096FF;
-padding: 8px 20px 8px 20px;
-border: 2px solid white;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-font: normal 18px 'Bitter', serif;
-border-radius: 30px;
-text-decoration: none;
-padding: 10px 28px;
-border: 1px solid #257C9E;
-font-size: 15px;
-color: white;
-margin-top: 20px;
-display: inline-block; 
-}
-
-.button:hover {
-background-color: #60AFEB;
-border: 2px solid #60AFEB;
--moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
--webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28)
-}
-
 fieldset {
 margin-bottom: 25px;
 border: none;
@@ -215,19 +243,27 @@ text-align: center;
 font-size: 11px;
 }
 
-input[type="text"], textarea {
-  background: rgba(255,255,255,0.1);
-  border: none;
-  font-size: 16px;
-  height: auto;
-  outline: 0;
-  margin: 0;
-  padding: 0px;
-  width: 100%;
-  background-color: #d1d1d1;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-  resize: none;
-  }
+#SampleSpeakers .listing .activeSpeaker {
+  text-transform: uppercase;
+  color: #0096FF;
+  font-weight: 700;
+  font-size: 0.75em;
+  position: relative;
+  white-space: nowrap;
+  padding-top: .6em;
+  width: 100px;
+  left: -10px;
+  top: 27px;
+}
+#SampleSpeakers .listing .activeSpeaker:before {
+  content: " ";
+  background: #0096FF;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  position: absolute;
+  left: -20px;
+}
   
 #messageInput {
     padding: 0;
@@ -241,6 +277,36 @@ input[type="text"], textarea {
     font-size: 16px;   
   }
 
+button {
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  color: #fff;
+  background-color: #6300ee;
+  padding: 1rem 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+span.ripple {
+  position: absolute; /* The absolute position we mentioned earlier */
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
 
   .nav-footer {
     margin-top: 1rem;
@@ -277,3 +343,8 @@ input[type="text"], textarea {
   .nav-footer-button:focus {
     color: hsl(0,0%,88%);
   }
+
+  .clear {
+    clear:both;
+    padding:5px;
+}
