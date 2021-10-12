@@ -1,4 +1,4 @@
-# electron-quick-start
+# electron-quick-start - just ui stuff for our app nothing confidential
 
 **Clone and run for a quick way to see Electron in action.**
 
