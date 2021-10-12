@@ -1,15 +1,12 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
-require('@electron/remote/main').initialize()
 const path = require('path')
-require('@electron/remote/main').initialize()
-require("@electron/remote/main").enable(webContents)
 
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1080,
+    height: 840,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -22,7 +19,7 @@ function createWindow () {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
