@@ -279,13 +279,15 @@ font-size: 11px;
 
 button {
   position: relative;
+  left: 80px;
+  top: 30px;
   overflow: hidden;
   transition: background 400ms;
   color: #fff;
   background-color: #6300ee;
-  padding: 1rem 2rem;
+  padding: .8rem 1.6rem;
   font-family: 'Roboto', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   outline: 0;
   border: 0;
   border-radius: 0.25rem;

@@ -4,25 +4,49 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
+const { Console } = require('console')
 const {ipcRenderer} = require('electron')
 const path = require('path')
 
 const charles = document.getElementById("charleslamannalisting")
-
-charles.addEventListener('click', (event) => {
-    charles.innerHTML += `<span class="activeSpeaker" id=""></span>`
-});
-
 const jason = document.getElementById("jasonzanderlisting")
-
-jason.addEventListener('click', (event) => {
-    jason.innerHTML += `<span class="activeSpeaker" id=""></span>`
-});
-
 const phil = document.getElementById("philspencerlisting")
 
+charles.addEventListener('click', (event) => {
+    console.log(event.target)
+    charles.innerHTML += `<span class="activeSpeaker" id="activeSpeakerCharles"></span>`
+
+    if(document.getElementById("activeSpeakerJason")) {
+      document.getElementById("activeSpeakerJason").remove();
+      console.log("jason is removed");
+    }
+    if(document.getElementById("activeSpeakerPhil")) {
+      document.getElementById("activeSpeakerPhil").remove();
+    }
+});
+
+jason.addEventListener('click', (event) => {
+    jason.innerHTML += `<span class="activeSpeaker" id="activeSpeakerJason"></span>`
+
+    if(document.getElementById("activeSpeakerCharles")) {
+      document.getElementById("activeSpeakerCharles").remove();
+      console.log("jason is removed");
+    }
+    if(document.getElementById("activeSpeakerPhil")) {
+      document.getElementById("activeSpeakerPhil").remove();
+    }
+});
+
 phil.addEventListener('click', (event) => {
-    phil.innerHTML += `<span class="activeSpeaker" id=""></span>`
+    phil.innerHTML += `<span class="activeSpeaker" id="activeSpeakerPhil"></span>`
+
+    if(document.getElementById("activeSpeakerJason")) {
+      document.getElementById("activeSpeakerJason").remove();
+      console.log("jason is removed");
+    }
+    if(document.getElementById("activeSpeakerCharles")) {
+      document.getElementById("activeSpeakerCharles").remove();
+    }
 });
 
 function createRipple(event) {
