@@ -12,6 +12,8 @@ const charles = document.getElementById("charleslamannalisting")
 const jason = document.getElementById("jasonzanderlisting")
 const phil = document.getElementById("philspencerlisting")
 
+const button = document.getElementById("button");
+
 charles.addEventListener('click', (event) => {
     console.log(event.target)
     charles.innerHTML += `<span class="activeSpeaker" id="activeSpeakerCharles"></span>`
@@ -47,6 +49,16 @@ phil.addEventListener('click', (event) => {
     if(document.getElementById("activeSpeakerCharles")) {
       document.getElementById("activeSpeakerCharles").remove();
     }
+});
+
+button.addEventListener('click' ,(event) => {
+  document.querySelector('.bg-modal').style.display = "flex";
+  document.querySelector('.SampleSpeakers').style.display = "none";
+  document.querySelector("wrapper").style["z-index"] = "-1";
+});
+
+document.querySelector('.close').addEventListener("click", function() {
+  document.querySelector('.bg-modal').style.display = "none";
 });
 
 function createRipple(event) {
