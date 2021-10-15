@@ -15,9 +15,7 @@ const phil = document.getElementById("philspencerlisting")
 const button = document.getElementById("button");
 
 charles.addEventListener('click', (event) => {
-    console.log(event.target)
-    charles.innerHTML += `<span class="activeSpeaker" id="activeSpeakerCharles"></span>`
-
+    document.querySelector('.bg-modal').remove();
     if(document.getElementById("activeSpeakerJason")) {
       document.getElementById("activeSpeakerJason").remove();
       console.log("jason is removed");
@@ -25,10 +23,12 @@ charles.addEventListener('click', (event) => {
     if(document.getElementById("activeSpeakerPhil")) {
       document.getElementById("activeSpeakerPhil").remove();
     }
+
+    charles.innerHTML += `<span class="activeSpeaker" id="activeSpeakerCharles"></span>`
+
 });
 
 jason.addEventListener('click', (event) => {
-    jason.innerHTML += `<span class="activeSpeaker" id="activeSpeakerJason"></span>`
 
     if(document.getElementById("activeSpeakerCharles")) {
       document.getElementById("activeSpeakerCharles").remove();
@@ -37,11 +37,11 @@ jason.addEventListener('click', (event) => {
     if(document.getElementById("activeSpeakerPhil")) {
       document.getElementById("activeSpeakerPhil").remove();
     }
+
+    jason.innerHTML += `<span class="activeSpeaker" id="activeSpeakerJason"></span>`
 });
 
 phil.addEventListener('click', (event) => {
-    phil.innerHTML += `<span class="activeSpeaker" id="activeSpeakerPhil"></span>`
-
     if(document.getElementById("activeSpeakerJason")) {
       document.getElementById("activeSpeakerJason").remove();
       console.log("jason is removed");
@@ -49,16 +49,20 @@ phil.addEventListener('click', (event) => {
     if(document.getElementById("activeSpeakerCharles")) {
       document.getElementById("activeSpeakerCharles").remove();
     }
+
+    phil.innerHTML += `<span class="activeSpeaker" id="activeSpeakerPhil"></span>`
+
 });
 
 button.addEventListener('click' ,(event) => {
   document.querySelector('.bg-modal').style.display = "flex";
-  document.querySelector('.SampleSpeakers').style.display = "none";
+  document.querySelector('#container').style.display = "none";
   document.querySelector("wrapper").style["z-index"] = "-1";
 });
 
 document.querySelector('.close').addEventListener("click", function() {
   document.querySelector('.bg-modal').style.display = "none";
+  document.querySelector('#container').style.display = "grid";
 });
 
 function createRipple(event) {
