@@ -8,14 +8,16 @@ const { Console } = require('console')
 const {ipcRenderer} = require('electron')
 const path = require('path')
 
+const anuj = document.getElementById("anujsaharanlisting")
 const charles = document.getElementById("charleslamannalisting")
+const gio = document.getElementById("giovannizinzilisting")
 const jason = document.getElementById("jasonzanderlisting")
 const phil = document.getElementById("philspencerlisting")
+
 
 const button = document.getElementById("button");
 
 charles.addEventListener('click', (event) => {
-    document.querySelector('.bg-modal').remove();
     if(document.getElementById("activeSpeakerJason")) {
       document.getElementById("activeSpeakerJason").remove();
       console.log("jason is removed");
@@ -23,19 +25,30 @@ charles.addEventListener('click', (event) => {
     if(document.getElementById("activeSpeakerPhil")) {
       document.getElementById("activeSpeakerPhil").remove();
     }
+    if(document.getElementById("activeSpeakerGio")) {
+      document.getElementById("activeSpeakerGio").remove();
+    }
+    if(document.getElementById("activeSpeakerAnuj")) {
+      document.getElementById("activeSpeakerAnuj").remove();
+    }
 
     charles.innerHTML += `<span class="activeSpeaker" id="activeSpeakerCharles"></span>`
 
 });
 
 jason.addEventListener('click', (event) => {
-
     if(document.getElementById("activeSpeakerCharles")) {
       document.getElementById("activeSpeakerCharles").remove();
       console.log("jason is removed");
     }
     if(document.getElementById("activeSpeakerPhil")) {
       document.getElementById("activeSpeakerPhil").remove();
+    }
+    if(document.getElementById("activeSpeakerGio")) {
+      document.getElementById("activeSpeakerGio").remove();
+    }
+    if(document.getElementById("activeSpeakerAnuj")) {
+      document.getElementById("activeSpeakerAnuj").remove();
     }
 
     jason.innerHTML += `<span class="activeSpeaker" id="activeSpeakerJason"></span>`
@@ -49,8 +62,52 @@ phil.addEventListener('click', (event) => {
     if(document.getElementById("activeSpeakerCharles")) {
       document.getElementById("activeSpeakerCharles").remove();
     }
+    if(document.getElementById("activeSpeakerGio")) {
+      document.getElementById("activeSpeakerGio").remove();
+    }
+    if(document.getElementById("activeSpeakerAnuj")) {
+      document.getElementById("activeSpeakerAnuj").remove();
+    }
 
     phil.innerHTML += `<span class="activeSpeaker" id="activeSpeakerPhil"></span>`
+
+});
+
+gio.addEventListener('click', (event) => {
+  if(document.getElementById("activeSpeakerJason")) {
+    document.getElementById("activeSpeakerJason").remove();
+    console.log("jason is removed");
+  }
+  if(document.getElementById("activeSpeakerPhil")) {
+    document.getElementById("activeSpeakerPhil").remove();
+  }
+  if(document.getElementById("activeSpeakerCharles")) {
+    document.getElementById("activeSpeakerCharles").remove();
+  }
+  if(document.getElementById("activeSpeakerAnuj")) {
+    document.getElementById("activeSpeakerAnuj").remove();
+  }
+
+  gio.innerHTML += `<span class="activeSpeaker" id="activeSpeakerGio"></span>`
+
+});
+
+anuj.addEventListener('click', (event) => {
+  if(document.getElementById("activeSpeakerJason")) {
+    document.getElementById("activeSpeakerJason").remove();
+    console.log("jason is removed");
+  }
+  if(document.getElementById("activeSpeakerPhil")) {
+    document.getElementById("activeSpeakerPhil").remove();
+  }
+  if(document.getElementById("activeSpeakerCharles")) {
+    document.getElementById("activeSpeakerCharles").remove();
+  }
+  if(document.getElementById("activeSpeakerGio")) {
+    document.getElementById("activeSpeakerGio").remove();
+  }
+
+  anuj.innerHTML += `<span class="activeSpeaker" id="activeSpeakerAnuj"></span>`
 
 });
 
