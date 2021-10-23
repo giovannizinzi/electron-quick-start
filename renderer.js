@@ -7,6 +7,7 @@
 const { Console } = require('console')
 const {ipcRenderer} = require('electron')
 const path = require('path')
+let {PythonShell} = require('python-shell')
 
 const anuj = document.getElementById("anujsaharanlisting")
 const charles = document.getElementById("charleslamannalisting")
@@ -20,7 +21,6 @@ const button = document.getElementById("button");
 charles.addEventListener('click', (event) => {
     if(document.getElementById("activeSpeakerJason")) {
       document.getElementById("activeSpeakerJason").remove();
-      console.log("jason is removed");
     }
     if(document.getElementById("activeSpeakerPhil")) {
       document.getElementById("activeSpeakerPhil").remove();
@@ -39,7 +39,6 @@ charles.addEventListener('click', (event) => {
 jason.addEventListener('click', (event) => {
     if(document.getElementById("activeSpeakerCharles")) {
       document.getElementById("activeSpeakerCharles").remove();
-      console.log("jason is removed");
     }
     if(document.getElementById("activeSpeakerPhil")) {
       document.getElementById("activeSpeakerPhil").remove();
@@ -57,7 +56,6 @@ jason.addEventListener('click', (event) => {
 phil.addEventListener('click', (event) => {
     if(document.getElementById("activeSpeakerJason")) {
       document.getElementById("activeSpeakerJason").remove();
-      console.log("jason is removed");
     }
     if(document.getElementById("activeSpeakerCharles")) {
       document.getElementById("activeSpeakerCharles").remove();
@@ -76,7 +74,6 @@ phil.addEventListener('click', (event) => {
 gio.addEventListener('click', (event) => {
   if(document.getElementById("activeSpeakerJason")) {
     document.getElementById("activeSpeakerJason").remove();
-    console.log("jason is removed");
   }
   if(document.getElementById("activeSpeakerPhil")) {
     document.getElementById("activeSpeakerPhil").remove();
@@ -93,9 +90,28 @@ gio.addEventListener('click', (event) => {
 });
 
 anuj.addEventListener('click', (event) => {
+
+PythonShell.runString('x=1+1;y=x+3;print(y)', null, function (err, results) {
+  if (err) throw err;
+  console.log(results[0]);
+  console.log('finished');
+});
+
+text = document.getElementById('textInput').value
+
+//Let's automatically send this to a python script. That makes the most sense? Local controllable talknet 
+if(text) {
+  console.log(text)
+  var bb = new Blob([text], { type: 'text/plain' });
+  var a = document.createElement('a');
+  a.download = 'download.txt';
+  a.href = URL.createObjectURL(bb);
+  a.click();
+}
+
+//Need to change this to something more dynamic. Get a list of all speakers available?
   if(document.getElementById("activeSpeakerJason")) {
     document.getElementById("activeSpeakerJason").remove();
-    console.log("jason is removed");
   }
   if(document.getElementById("activeSpeakerPhil")) {
     document.getElementById("activeSpeakerPhil").remove();
