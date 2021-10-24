@@ -113,6 +113,7 @@
           </p></div>
 
         <div class="inner"><input type="image" id="audioDownload2" class="audioDownload2" src="./images/uploadAudio.png" /></div>
+        <input type="file" id="my_file2" accept="audio/wav">
         <div class="inner"><input type="image" id="recording" class="recording" src="./images/recording.png" /></div>
         </div>
   </div>
@@ -190,7 +191,10 @@
 
   <div class="right">
       <textarea placeholder="Enter or upload text to transcribe..." id="textInput" name="textInput" rows="16" style="overflow: hidden; word-wrap: break-word; resize: none; "></textarea>  
-      <div class="inner"><input type="image" id="audioDownload" class="audioDownload" src="./images/uploadAudio.png" /></div>
+      <div class="inner">
+        <input type="image" id="audioDownload" class="audioDownload" src="./images/uploadAudio.png"/>
+      </div>
+      <input type="file" id="my_file" accept="audio/wav">
     </div>
 
   </section>

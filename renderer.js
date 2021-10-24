@@ -18,6 +18,19 @@ const phil = document.getElementById("philspencerlisting")
 
 const button = document.getElementById("button");
 
+
+document.getElementById('audioDownload').onclick = function() {
+  document.getElementById('my_file').click();
+  //From here, try to run some python commands? Will this work? I.e. can I get this to input into the model?
+  
+};
+
+document.getElementById('audioDownload2').onclick = function() {
+  document.getElementById('my_file2').click();
+  //From here, try to run some python commands? Will this work? I.e. can I get this to input into the model?
+  
+};
+
 charles.addEventListener('click', (event) => {
     if(document.getElementById("activeSpeakerJason")) {
       document.getElementById("activeSpeakerJason").remove();
