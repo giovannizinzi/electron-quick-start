@@ -8,6 +8,7 @@ const { Console } = require('console')
 const {ipcRenderer} = require('electron')
 const path = require('path')
 let {PythonShell} = require('python-shell')
+const http = require('http')
 
 const anuj = document.getElementById("anujsaharanlisting")
 const charles = document.getElementById("charleslamannalisting")
@@ -21,13 +22,17 @@ const button = document.getElementById("button");
 
 document.getElementById('audioDownload').onclick = function() {
   document.getElementById('my_file').click();
-  //From here, try to run some python commands? Will this work? I.e. can I get this to input into the model?
-  
+
+  PythonShell.runString('x=1+1;y=x+3;print(y)', null, function (err, results) {
+    if (err) throw err;
+    console.log(results[0]);
+    console.log('finished');
+  });
 };
 
 document.getElementById('audioDownload2').onclick = function() {
   document.getElementById('my_file2').click();
-  //From here, try to run some python commands? Will this work? I.e. can I get this to input into the model?
+  //After input uploaded, try to run some python commands? Will this work? I.e. can I get this to input into the model?
   
 };
 
@@ -100,15 +105,42 @@ gio.addEventListener('click', (event) => {
 
   gio.innerHTML += `<span class="activeSpeaker" id="activeSpeakerGio"></span>`
 
-});
+  text = document.getElementById('textInput').value
+  console.log(text)
+
+  const data = JSON.stringify({
+    transcript : text,
+    model : "1D0z716mepv9-CAxrPR0-4aO074ONMtwg"})
+  
+  const options = {
+    hostname: '192.168.1.23',
+    port: 8080,
+    path: '/talknet',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': data.length
+    }
+  }
+  
+  const req = http.request(options, res => {
+    console.log(`statusCode: ${res.statusCode}`)
+  
+    res.on('data', d => {
+      process.stdout.write(d)
+    })
+  })
+  
+  req.on('error', error => {
+    console.error(error)
+  })
+  
+  req.write(data)
+  req.end()  
+
+  });
 
 anuj.addEventListener('click', (event) => {
-
-PythonShell.runString('x=1+1;y=x+3;print(y)', null, function (err, results) {
-  if (err) throw err;
-  console.log(results[0]);
-  console.log('finished');
-});
 
 text = document.getElementById('textInput').value
 
