@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@electron/remote": "^2.0.1",
+    "audiobuffer-to-wav": "^1.0.0",
     "axios": "^0.23.0",
     "python-shell": "^3.0.1",
     "request": "^2.88.2"

@@ -9,12 +9,15 @@ const {ipcRenderer} = require('electron')
 const path = require('path')
 let {PythonShell} = require('python-shell')
 const http = require('http')
+const fs = require('fs');
+const spawn = require("child_process").spawn;
 
 const anuj = document.getElementById("anujsaharanlisting")
 const charles = document.getElementById("charleslamannalisting")
 const gio = document.getElementById("giovannizinzilisting")
 const jason = document.getElementById("jasonzanderlisting")
 const phil = document.getElementById("philspencerlisting")
+const right = document.getElementById("right")
 
 
 const button = document.getElementById("button");
@@ -124,11 +127,31 @@ gio.addEventListener('click', (event) => {
   }
   
   const req = http.request(options, res => {
+    var str = ''
     console.log(`statusCode: ${res.statusCode}`)
-  
-    res.on('data', d => {
-      process.stdout.write(d)
+    res.on('data', function (body) {
+      str += body;
     })
+
+    res.on('end', function () {
+      console.log('writing')
+      fs.writeFile('textForPython6.txt', str, err => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        //file written successfully
+      })
+      const pythonProcess = spawn('python',["convertToFile.py"]);
+      // right.innerHTML +=
+      // `
+      // <audio controls>
+      //   <source src="bb560.wav" type="audio/wav">
+      //   Your browser does not support the audio element.
+      // </audio>
+      // `
+    });
+
   })
   
   req.on('error', error => {
@@ -136,9 +159,9 @@ gio.addEventListener('click', (event) => {
   })
   
   req.write(data)
-  req.end()  
+  req.end()
+});
 
-  });
 
 anuj.addEventListener('click', (event) => {
 
